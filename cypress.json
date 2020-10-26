@@ -1,0 +1,15 @@
+  {
+    "chromeWebSecurity": false,
+    "viewportWidth": 1600,
+    "viewportHeight": 1200,
+    "defaultCommandTimeout": 15000,
+    "pageLoadTimeout": 10000,
+    "env": {
+
+    },
+    "fixturesFolder": "./cypress/fixtures",
+    "integrationFolder": "./cypress/integration",
+    "pluginsFile": "./cypress/plugins/index.js",
+    "supportFile": "./cypress/support/index.js",
+    "ignoreTestFiles": ["*~", "/**/\\#*\\#"] 
+}

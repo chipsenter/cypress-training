@@ -1,0 +1,9 @@
+to Install run the follwing commands
+npm install
+
+To run the test with a GUI run the following command
+npm run cypress:open
+
+To run in Command Line Interface run the following command
+npm run cypress:run
+
