@@ -412,6 +412,8 @@ describe('Cypress Automation Course 2020', function () {
       var result = total_amount.split(" ")
       result = result[1].trim()
       cy.log(result)
+      
+      // Convert String to Int
       sum = Number(sum) + Number(result);
       // Asynch function - resolve promise
     }).then(function () {
@@ -424,6 +426,8 @@ describe('Cypress Automation Course 2020', function () {
       var result = total_amount.split(" ")
       var total = result[1].trim()
       cy.log('Shopping-cart total is ' + result)
+
+      // Convert String to Int
       expect(Number(total)).to.equal(Number(sum))
 
     })
