@@ -2,8 +2,8 @@
 /// <reference types="Cypress-iframe" />
 
 import 'cypress-iframe'
-import HomePage from '../integration/pageObjects/homePage'
-import ShopPage from '../integration/pageObjects/shopPage'
+import HomePage from '../../integration/pageObjects/homePage'
+import ShopPage from '../../integration/pageObjects/shopPage'
 
 describe('Cypress Automation Course 2020', function () {
   Cypress.config('defaultCommandTimeout', 15000)
@@ -33,7 +33,6 @@ describe('Cypress Automation Course 2020', function () {
       console.log("Cypress Automation in test")
     })
 
-    //========================================================================// 
 
     // Iterating over an Array of products
     cy.get('@productLocator').find('.product').each(($el, index, $list) => {
@@ -46,8 +45,6 @@ describe('Cypress Automation Course 2020', function () {
         cy.contains('ADD TO CART').click()
       }
     })
-
-    //=======================================================================//
 
     // Assert if logo text is correctly displayed
     cy.get('.brand').should('have.text', 'GREENKART')
@@ -64,6 +61,8 @@ describe('Cypress Automation Course 2020', function () {
     cy.contains('PROCEED TO CHECKOUT').click()
 
   })
+
+  //========================================================================// 
 
   it('More iteration and working with Alias ', function () {
 
@@ -96,6 +95,7 @@ describe('Cypress Automation Course 2020', function () {
     cy.contains('PROCEED TO CHECKOUT').click()
 
   })
+  //========================================================================// 
 
   it('Iterate over products', function () {
 
@@ -119,10 +119,11 @@ describe('Cypress Automation Course 2020', function () {
     cy.get(':nth-child(14)').click()
 
   })
+  //========================================================================// 
 
   it('Cypress CheckBoxes', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + '/AutomationPractice')
 
     cy.get('#checkBoxOption1').check().should('be.checked').and('have.value', 'option1')
     cy.get('#checkBoxOption2').should('not.be.checked').and('have.value', 'option2')
@@ -132,20 +133,22 @@ describe('Cypress Automation Course 2020', function () {
     cy.get('input[type="checkbox"]').uncheck(['option1', 'option2', 'option3'])
 
   })
+  //========================================================================// 
 
   // Static Dropdowns
   it('Cypress Static DropDowns', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + '/AutomationPractice')
 
     cy.get('select').select('option2').should('have.value', 'option2')
 
   })
+  //========================================================================// 
 
   // Dynamic Dropdowns
   it('Cypress Dynamic DropDowns', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + '/AutomationPractice')
 
     cy.get('#autocomplete').type('swe')
 
@@ -160,11 +163,12 @@ describe('Cypress Automation Course 2020', function () {
     cy.get('#autocomplete').should('have.value', 'Sweden')
 
   })
+  //========================================================================// 
 
   // Hidden values
   it('Cypress Hidden Not Hidden Values', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + '/AutomationPractice')
 
     cy.get('#displayed-text').should('be.visible')
     cy.get('#hide-textbox').click()
@@ -173,11 +177,12 @@ describe('Cypress Automation Course 2020', function () {
     cy.get('#displayed-text').should('be.visible')
 
   })
+  //========================================================================// 
 
   // Radio Buttons
   it('Cypress Radio Buttons', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + '/AutomationPractice')
 
     cy.get('input[name="radioButton"]').should('be.visible')
       .check(['radio1', 'radio2', 'radio3'])
@@ -186,11 +191,12 @@ describe('Cypress Automation Course 2020', function () {
     cy.get('h1').scrollIntoView()
 
   })
+  //========================================================================// 
 
   // ALERTS / Pop-Ups / Confirm 
   it('Cypress Pop Ups / Alerts / Confirm', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + '/AutomationPractice')
 
     cy.get('#alertbtn').click()
     cy.get('#confirmbtn').click()
@@ -209,19 +215,22 @@ describe('Cypress Automation Course 2020', function () {
     })
 
   })
+  //========================================================================// 
 
   // Workaround opening links in new tabs
   it('Cypress Navigating to new window', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + '/AutomationPractice')
 
     cy.get('#opentab').invoke('removeAttr', 'target').click()
 
   })
+  //========================================================================// 
+
   // Navigating back to main page
   it('Cypress Navigating browser back', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + '/AutomationPractice')
 
     cy.get('#opentab').invoke('removeAttr', 'target').click()
     cy.url().should('include', 'https://www.rahulshettyacademy.com/')
@@ -231,10 +240,11 @@ describe('Cypress Automation Course 2020', function () {
 
 
   })
+  //========================================================================// 
 
   it('Cypress Validating Web tables', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + '/AutomationPractice')
 
     cy.get('tr td:nth-child(2)').each(($el, index, $list) => {
 
@@ -247,20 +257,22 @@ describe('Cypress Automation Course 2020', function () {
       }
     })
   })
+  //========================================================================// 
 
   it('Cypress Mouseover Actions', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + '/AutomationPractice')
 
     cy.get('#mousehover').next().invoke('show')
     cy.contains('Top').should('be.visible').click({ force: true })
     cy.url('include', 'top')
   })
+  //========================================================================// 
 
   // Validating links open URL
   it('Cypress Handling Child Windows', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + "/AutomationPractice")
 
     cy.get('#opentab').then(function (el) {
       const url = el.prop('href')
@@ -269,10 +281,11 @@ describe('Cypress Automation Course 2020', function () {
 
     })
   })
+  //========================================================================// 
 
   it('Cypress Handling IFrames', function () {
 
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice")
+    cy.visit(Cypress.env('url') + "/AutomationPractice")
 
     // 1. Work in frames start with below code frameLoaded
     cy.frameLoaded('#courses-iframe').should('be.visible')
@@ -282,12 +295,14 @@ describe('Cypress Automation Course 2020', function () {
 
     cy.iframe().find("h1[class*='pricing-title']").should('have.length', 2)
   })
+  //========================================================================// 
 
   it('Cypress Handling Fixture files', function () {
 
     const homePage = new HomePage()
     const shopPage = new ShopPage()
-    cy.visit("https://rahulshettyacademy.com/angularpractice")
+
+    cy.visit(Cypress.env('url') + '/angularpractice')
 
     //cy.get('@user').then(function(user) {})
     homePage.nameInput().type(this.user.name)
@@ -322,13 +337,14 @@ describe('Cypress Automation Course 2020', function () {
     })
 
   })
+  //========================================================================// 
 
   it('Cypress TDD driven Testing', function () {
 
     const homePage = new HomePage()
     const shopPage = new ShopPage()
 
-    cy.visit("https://rahulshettyacademy.com/angularpractice")
+    cy.visit(Cypress.env('url') + '/angularpractice')
 
     homePage.shopButton().click()
 
@@ -350,20 +366,15 @@ describe('Cypress Automation Course 2020', function () {
     shopPage.alertAssertionText().should('have.text', 'Success!')
 
   })
+  //========================================================================// 
+
+
 
   it('Cypress Add products to cart and validate', function () {
-
+    const homePage = new HomePage()
     const shopPage = new ShopPage()
 
-    cy.visit("https://rahulshettyacademy.com/angularpractice")
-
-
-
-  })
-
-  it('Cypress Add products to cart and validate', function () {
-
-    cy.visit("https://rahulshettyacademy.com/angularpractice")
+    cy.visit(Cypress.env('url') + '/angularpractice')
 
     cy.get(':nth-child(2) > .nav-link').click()
 
@@ -377,12 +388,14 @@ describe('Cypress Automation Course 2020', function () {
 
 
   })
+  //========================================================================// 
 
-  it.only('Cypress Sum Total Value in Cart', function () {
+  it('Cypress Sum Total Value in Cart', function () {
 
     const homePage = new HomePage()
     const shopPage = new ShopPage()
-    cy.visit("https://rahulshettyacademy.com/angularpractice")
+
+    cy.visit(Cypress.env('url') + '/angularpractice')
 
     //cy.get('@user').then(function(user) {})
     homePage.nameInput().type(this.user.name)
@@ -408,11 +421,13 @@ describe('Cypress Automation Course 2020', function () {
 
     cy.get('tr td:nth-child(4) > strong').each(($el, index, $list) => {
 
+      // Remove 1st character in the string
+
       const total_amount = $el.text()
       var result = total_amount.split(" ")
       result = result[1].trim()
       cy.log(result)
-      
+
       // Convert String to Int
       sum = Number(sum) + Number(result);
       // Asynch function - resolve promise
@@ -446,7 +461,7 @@ describe('Cypress Automation Course 2020', function () {
     })
 
   })
-
+  //========================================================================// 
 
 
 
